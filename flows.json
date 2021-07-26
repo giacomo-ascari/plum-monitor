@@ -7,6 +7,148 @@
         "info": ""
     },
     {
+        "id": "db751134f91866d1",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "4ddd27722e2a389f",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "b7887ac3de3884e0",
+        "order": 1,
+        "disp": false,
+        "width": "35",
+        "collapse": false
+    },
+    {
+        "id": "b7887ac3de3884e0",
+        "type": "ui_tab",
+        "name": "Plum Monitor",
+        "icon": "fa-tachometer",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "c8d3091e2f57eaf1",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-custom",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#404040",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "plum theme",
+                "default": "#4B7930",
+                "baseColor": "#643f7f",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#4B7930",
+                    "value": "#643f7f",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#643f7f",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#000000",
+                    "edited": true
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#000000",
+                    "edited": true
+                },
+                "group-textColor": {
+                    "value": "#8c5cae",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#000000",
+                    "edited": true
+                },
+                "group-backgroundColor": {
+                    "value": "#0f0f0f",
+                    "edited": true
+                },
+                "widget-textColor": {
+                    "value": "#ffffff",
+                    "edited": true
+                },
+                "widget-backgroundColor": {
+                    "value": "#643f7f",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#0f0f0f",
+                    "edited": true
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
         "id": "494a3fee99ae2bb7",
         "type": "mqtt in",
         "z": "f6f2187d.f17ca8",
@@ -373,48 +515,5 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "db751134f91866d1",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "broker.hivemq.com",
-        "port": "1883",
-        "clientid": "",
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "sessionExpiry": ""
-    },
-    {
-        "id": "4ddd27722e2a389f",
-        "type": "ui_group",
-        "name": "Default",
-        "tab": "b7887ac3de3884e0",
-        "order": 1,
-        "disp": false,
-        "width": "35",
-        "collapse": false
-    },
-    {
-        "id": "b7887ac3de3884e0",
-        "type": "ui_tab",
-        "name": "Plum Monitor",
-        "icon": "fa-tachometer",
-        "disabled": false,
-        "hidden": false
     }
 ]
