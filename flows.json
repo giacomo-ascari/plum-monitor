@@ -1,0 +1,420 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "494a3fee99ae2bb7",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "asky-plum-8182",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "db751134f91866d1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 120,
+        "y": 420,
+        "wires": [
+            [
+                "69271019914bfe09"
+            ]
+        ]
+    },
+    {
+        "id": "60a7e99cf503a88a",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "4ddd27722e2a389f",
+        "order": 1,
+        "width": "17",
+        "height": "9",
+        "label": "Temperatures [°C]",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No data",
+        "dot": false,
+        "ymin": "30",
+        "ymax": "90",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 710,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c03b57556849f3f8",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "func": "let temp;\ntry {\n    temp = msg.payload.sensors_temperatures.cpu_thermal[0][1];\n} catch(e) {\n    temp = msg.payload.sensors_temperatures[\"cpu-thermal\"][0][1];\n}\n\nreturn {\n    payload: temp,\n    topic: msg.payload.name\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 420,
+        "wires": [
+            [
+                "60a7e99cf503a88a"
+            ]
+        ]
+    },
+    {
+        "id": "69271019914bfe09",
+        "type": "json",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 290,
+        "y": 420,
+        "wires": [
+            [
+                "c03b57556849f3f8",
+                "40bd73a5146ebe1c",
+                "afa74ddcb71e9b36",
+                "ac9d127ca6d9f328",
+                "d91da78916a6a607",
+                "581f31f0249e3c9b"
+            ]
+        ]
+    },
+    {
+        "id": "afa74ddcb71e9b36",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "7565d180e76803b6",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "4ddd27722e2a389f",
+        "order": 2,
+        "width": "17",
+        "height": "6",
+        "label": "CPU Percentage [%]",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No data",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 720,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "40bd73a5146ebe1c",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "func": "\nreturn {\n    payload: msg.payload.cpu_percent,\n    topic: msg.payload.name\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 460,
+        "wires": [
+            [
+                "7565d180e76803b6"
+            ]
+        ]
+    },
+    {
+        "id": "ac9d127ca6d9f328",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "func": "\nreturn {\n    payload: msg.payload.virtual_memory[2],\n    topic: msg.payload.name\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 500,
+        "wires": [
+            [
+                "2b2d99fe5935dd64"
+            ]
+        ]
+    },
+    {
+        "id": "2b2d99fe5935dd64",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "4ddd27722e2a389f",
+        "order": 3,
+        "width": "17",
+        "height": "6",
+        "label": "RAM Percentage [%]",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No data",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 720,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "843f21b5cd333176",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "4ddd27722e2a389f",
+        "order": 5,
+        "width": "17",
+        "height": "6",
+        "label": "DISK Percentage [%]",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No data",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 720,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d91da78916a6a607",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "func": "\nreturn {\n    payload: msg.payload.disk_usage[3],\n    topic: msg.payload.name\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 540,
+        "wires": [
+            [
+                "843f21b5cd333176"
+            ]
+        ]
+    },
+    {
+        "id": "581f31f0249e3c9b",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "func": "let pl = msg.payload;\n\nif (context.get(\"clients\")[pl.name] == undefined) context.get(\"clients\")[pl.name] = 0;\n\nlet bandwith = pl.net_io_counters[0] +  pl.net_io_counters[1] - context.get(\"clients\")[pl.name];\n\ncontext.get(\"clients\")[pl.name] = pl.net_io_counters[0] +  pl.net_io_counters[1];\n\nreturn {\n    payload: (bandwith / 1024 / 10).toFixed(2),\n    topic: pl.name\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\ncontext.set(\"clients\", {})",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 580,
+        "wires": [
+            [
+                "a343d43559f81a64"
+            ]
+        ]
+    },
+    {
+        "id": "a343d43559f81a64",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "4ddd27722e2a389f",
+        "order": 4,
+        "width": "17",
+        "height": "9",
+        "label": "Network [KB/s]",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No data",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 700,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "db751134f91866d1",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "4ddd27722e2a389f",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "b7887ac3de3884e0",
+        "order": 1,
+        "disp": false,
+        "width": "35",
+        "collapse": false
+    },
+    {
+        "id": "b7887ac3de3884e0",
+        "type": "ui_tab",
+        "name": "Plum Monitor",
+        "icon": "fa-tachometer",
+        "disabled": false,
+        "hidden": false
+    }
+]
