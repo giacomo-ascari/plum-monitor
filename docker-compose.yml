@@ -1,0 +1,8 @@
+version: "3.3"
+services:
+  plum-monitor:
+    build: "."
+    image: "plum-monitor:latest"
+    ports:
+      - "${DOCKER_PORT}:1880"
+    restart: "unless-stopped"
